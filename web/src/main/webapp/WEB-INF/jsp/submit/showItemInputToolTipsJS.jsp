@@ -106,7 +106,7 @@ function replaceSwitch(eventCRFId,itemId,id,attribute,str1,str2,filename,pathAnd
 	var ft = document.getElementById('ft'+itemId);
 	var up = document.getElementById('up'+itemId);
 	var uploadLink = 'UploadFile?submitted=no&itemId=' + itemId;
-	var downloadLink = 'DownloadAttachedFile?eventCRFId=' + eventCRFId + '&fileName=' + pathAndName;
+	var downloadLink = 'DownloadAttachedFile?eventCRFId=' + eventCRFId + '&fileName=' + pathAndName.replace(/\\/g,"/");
 	if(rp.getAttribute('value')=="<fmt:message key="replace" bundle="${resword}"/>") {
 		if(a) {
 			div.appendChild(a);
@@ -166,7 +166,7 @@ function removeSwitch(eventCRFId,itemId,id,attribute,str1,str2,filename,pathAndN
 	var ft = document.getElementById('ft'+itemId);
 	var up = document.getElementById('up'+itemId);
 	var input = document.getElementById('input'+itemId);
-	var downloadLink = 'DownloadAttachedFile?eventCRFId=' + eventCRFId + '&fileName=' + pathAndName;
+	var downloadLink = 'DownloadAttachedFile?eventCRFId=' + eventCRFId + '&fileName=' + pathAndName.replace(/\\/g,"/");
 	if(rm.getAttribute('value')=='<fmt:message key="remove" bundle="${resword}"/>') {
 		input.setAttribute("value","");
 		if(a) {
