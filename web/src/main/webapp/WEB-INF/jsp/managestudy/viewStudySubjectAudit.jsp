@@ -369,7 +369,7 @@
                                                 <c:set var="path" value="${eventCRFAudit.oldValue}"/>
                                                 <c:set var="sep" value="\\"/>
                                                 <c:set var="sep2" value="\\\\"/>
-                                                <a href="DownloadAttachedFile?eventCRFId=<c:out value="${eventCRFAudit.eventCRFId}"/>&fileName=${fn:replace(fn:replace(path,'+','%2B'),sep,sep2)}"><c:out value="${eventCRFAudit.oldValue}"/></a>
+                                                <a href="DownloadAttachedFile?eventCRFId=<c:out value="${eventCRFAudit.eventCRFId}"/>&fileName=${fn:replace(fn:replace(fn:replace(path, '\\', '/'),'+','%2B'),sep,sep2)}"><c:out value="${eventCRFAudit.oldValue}"/></a>
                                             </c:when>
                                             <c:otherwise><c:out value="${eventCRFAudit.oldValue}"/></c:otherwise>
                                         </c:choose>
@@ -402,7 +402,7 @@
                                                 <c:set var="path" value="${eventCRFAudit.newValue}"/>
                                                 <c:set var="sep" value="\\"/>
                                                 <c:set var="sep2" value="\\\\"/>
-                                                <a href="DownloadAttachedFile?eventCRFId=<c:out value="${eventCRFAudit.eventCRFId}"/>&fileName=${fn:replace(fn:replace(path,'+','%2B'),sep,sep2)}"><c:out value="${eventCRFAudit.newValue}"/></a>
+                                                <a href="DownloadAttachedFile?eventCRFId=<c:out value="${eventCRFAudit.eventCRFId}"/>&fileName=${fn:replace(fn:replace(fn:replace(path, '\\', '/'),'+','%2B'),sep,sep2)}"><c:out value="${eventCRFAudit.newValue}"/></a>
                                             </c:when>
                                             <c:otherwise><c:out value="${eventCRFAudit.newValue}"/></c:otherwise>
                                         </c:choose>
