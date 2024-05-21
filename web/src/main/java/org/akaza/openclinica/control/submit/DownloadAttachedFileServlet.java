@@ -20,7 +20,6 @@ import org.akaza.openclinica.web.InsufficientPermissionException;
 import java.io.DataInputStream;
 import java.io.File;
 import java.io.FileInputStream;
-import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Locale;
 
@@ -82,7 +81,7 @@ public class DownloadAttachedFileServlet extends SecureController {
             File temp = new File(filePath,f.getName());            
             String canonicalPath= temp.getCanonicalPath();
             
-            if (Paths.get(canonicalPath).startsWith(Paths.get(filePath))) {
+            if (canonicalPath.startsWith(filePath)) {
             	;
             }else {
             	throw new RuntimeException("Traversal attempt - file path not allowed " + fileName);
@@ -130,7 +129,7 @@ public class DownloadAttachedFileServlet extends SecureController {
             String canonicalPath= file.getCanonicalPath();            
             String definedDownloadPath = Utils.getAttachedFileRootPath();
             
-            if(!(Paths.get(canonicalPath).startsWith(Paths.get(definedDownloadPath)))) {
+            if(!(canonicalPath.startsWith(definedDownloadPath))) {
             	throw new RuntimeException("Traversal attempt - file path not allowed " + fileName);
             }
         	
