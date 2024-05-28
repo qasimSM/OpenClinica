@@ -1,7 +1,6 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <fmt:setBundle basename="org.akaza.openclinica.i18n.format" var="resformat"/>
 <fmt:setBundle basename="org.akaza.openclinica.i18n.words" var="resword"/>
 <fmt:setBundle basename="org.akaza.openclinica.i18n.notes" var="restext"/>
@@ -106,7 +105,7 @@ function replaceSwitch(eventCRFId,itemId,id,attribute,str1,str2,filename,filePat
 	var up = document.getElementById('up'+itemId);
 	<%-- uploadLink is different from showItemInput.jsp --%>
 	var uploadLink = 'UploadFile?submitted=no&inputName=' + itemId;
-	var downloadLink = 'DownloadAttachedFile?eventCRFId=' + eventCRFId + '&fileName=' + filePathName;
+	var downloadLink = 'DownloadAttachedFile?eventCRFId=' + eventCRFId + '&fileName=' + filePathName.replace(/\\/g,"/");
 	if(rp.getAttribute('value')=="<fmt:message key="replace" bundle="${resword}"/>") {
 		if(a) {
 			div.appendChild(a);
@@ -170,7 +169,7 @@ function removeSwitch(eventCRFId,itemId,id,attribute,str1,str2,filename,filePath
 		//which means this is a single item with itemId being a number
 		input = document.getElementById('input'+itemId);
 	}
-	var downloadLink = 'DownloadAttachedFile?eventCRFId=' + eventCRFId + '&fileName=' + filePathName;
+	var downloadLink = 'DownloadAttachedFile?eventCRFId=' + eventCRFId + '&fileName=' + filePathName.replace(/\\/g,"/");
 	if(rm.getAttribute('value')=='<fmt:message key="remove" bundle="${resword}"/>') {
 		input.setAttribute("value","");
 		if(a) {
@@ -367,7 +366,7 @@ function switchStr(itemId, id,attribute,str1,str2) {
 		</c:when>
 		<c:otherwise>
 			<c:set var="prefilename" value="${displayItem.data.value}"/>
-			<a href="DownloadAttachedFile?eventCRFId=<c:out value="${section.eventCRF.id}"/>&fileName=<c:out value="${fn:replace(prefilename,'+','%2B')}"/>" id="a<c:out value="${inputName}"/>"><c:out value="${inputTxtValue}"/></a>
+			<a href="DownloadAttachedFile?eventCRFId=<c:out value="${section.eventCRF.id}"/>&fileName=<c:out value="${fn:replace(fn:replace(prefilename, '\\', '/'),'+','%2B')}"/>" id="a<c:out value="${inputName}"/>"><c:out value="${inputTxtValue}"/></a>
 			<input type="hidden" id="hidft<c:out value="${inputName}"/>" name="fileText<c:out value="${inputName}"/>" disabled class="disabled">
 			<input type="hidden" id="hidup<c:out value="${inputName}"/>" name="uploadFile<c:out value="${inputName}"/>" value="<fmt:message key="click_to_upload" bundle="${resword}"/>" onClick="javascript:openDocWindow('UploadFile?submitted=no&itemId=<c:out value="${itemId}"/>&inputName=<c:out value="${inputName}"/>')">
 		</div><br>
