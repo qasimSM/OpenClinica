@@ -706,18 +706,6 @@ public class SpreadSheetTableClassic implements SpreadSheetTable {// extends
                                         finalRegexp = finalRegexp.substring(1, finalRegexp.length() - 1);
                                         try {
                                             Pattern p = Pattern.compile(finalRegexp);
-                                            // YW 11-21-2007 << add another \ if
-                                            // there is \ in regexp
-                                            char[] chars = regexp1.toCharArray();
-                                            regexp1 = "";
-                                            for (char c : chars) {
-                                                if (c == '\\' && !dbName.equals("oracle")) {
-                                                    regexp1 += c + "\\";
-                                                } else {
-                                                    regexp1 += c;
-                                                }
-                                            }
-                                            // YW >>
                                         } catch (PatternSyntaxException pse) {
                                             errors.add(resPageMsg.getString("the") + " " + resPageMsg.getString("VALIDATION_column")
                                                 + resPageMsg.getString("has_an_invalid_regular_expression_at_row") + " " + k + ", "
