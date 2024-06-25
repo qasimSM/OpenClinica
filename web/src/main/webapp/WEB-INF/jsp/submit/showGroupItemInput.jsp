@@ -366,7 +366,7 @@ function switchStr(itemId, id,attribute,str1,str2) {
 		</c:when>
 		<c:otherwise>
 			<c:set var="prefilename" value="${displayItem.data.value}"/>
-			<a href="DownloadAttachedFile?eventCRFId=<c:out value="${section.eventCRF.id}"/>&fileName=<c:out value="${fn:replace(fn:replace(prefilename, '\\', '/'),'+','%2B')}"/>" id="a<c:out value="${inputName}"/>"><c:out value="${inputTxtValue}"/></a>
+			<a href="DownloadAttachedFile?eventCRFId=<c:out value="${section.eventCRF.id}"/>&fileName=<c:out value="${fn:replace(fn:replace(prefilename, '\\\\', '/'),'+','%2B')}"/>" id="a<c:out value="${inputName}"/>"><c:out value="${inputTxtValue}"/></a>
 			<input type="hidden" id="hidft<c:out value="${inputName}"/>" name="fileText<c:out value="${inputName}"/>" disabled class="disabled">
 			<input type="hidden" id="hidup<c:out value="${inputName}"/>" name="uploadFile<c:out value="${inputName}"/>" value="<fmt:message key="click_to_upload" bundle="${resword}"/>" onClick="javascript:openDocWindow('UploadFile?submitted=no&itemId=<c:out value="${itemId}"/>&inputName=<c:out value="${inputName}"/>')">
 		</div><br>

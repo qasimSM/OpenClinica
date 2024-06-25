@@ -31,7 +31,7 @@
 	</c:when>
 	<c:otherwise>
 		<c:set var="prefilename" value="${inputTxtValue}"/>
-		<a href="DownloadAttachedFile?eventCRFId=<c:out value="${section.eventCRF.id}"/>&fileName=<c:out value="${fn:replace(fn:replace(prefilename, '\\', '/'),'+','%2B')}"/>" id="a<c:out value="${itemId}"/>"><c:out value="${inputTxtValue}"/></a>
+		<a href="DownloadAttachedFile?eventCRFId=<c:out value="${section.eventCRF.id}"/>&fileName=<c:out value="${fn:replace(fn:replace(prefilename, '\\\\', '/'),'+','%2B')}"/>" id="a<c:out value="${itemId}"/>"><c:out value="${inputTxtValue}"/></a>
 		<c:choose>
 		<c:when test="${fn:contains(inputTxtValue, 'fileNotFound#')}">
 			<del><c:out value="${fn:substringAfter(inputTxtValue,'fileNotFound#')}"/></del>

@@ -181,7 +181,7 @@
 			<c:set var="filename" value="${displayItem.data.value}"/>
 			<c:set var="sep" value="\\"/>
             <c:set var="sep2" value="\\\\"/>
-			<a href="DownloadAttachedFile?eventCRFId=<c:out value="${section.eventCRF.id}"/>&fileName=${fn:replace(fn:replace(fn:replace(filename, '\\', '/'),'+','%2B'),sep,sep2)}" id="a<c:out value="${itemId}"/>"><c:out value="${inputTxtValue}"/></a>
+			<a href="DownloadAttachedFile?eventCRFId=<c:out value="${section.eventCRF.id}"/>&fileName=${fn:replace(fn:replace(fn:replace(filename, '\\\\', '/'),'+','%2B'),sep,sep2)}" id="a<c:out value="${itemId}"/>"><c:out value="${inputTxtValue}"/></a>
 		</c:otherwise>
 		</c:choose>
 	</c:otherwise>
